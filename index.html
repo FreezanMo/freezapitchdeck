@@ -58,6 +58,13 @@
             background-blend-mode: overlay;
         }
 
+        .section-bg-financial-projections { /* New background for financial projections */
+            background-image: linear-gradient(rgba(230,240,240,0.95), rgba(230,240,240,0.95)), url('https://placehold.co/1200x400/B0C0C0/000000?text=Financial+Charts+Graphs'); /* Mild light blue-gray for financial theme */
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
         .section-bg-roadmap-team-ask {
             background-image: linear-gradient(rgba(245,250,250,0.95), rgba(245,250,250,0.95)), url('https://placehold.co/1200x400/C0D0D0/000000?text=Future+Vision+Teamwork'); /* Mild light gray-blue */
             background-size: cover;
@@ -97,45 +104,72 @@
             margin-right: 0.5rem;
             color: #ffc107; /* Tailwind yellow-500 */
         }
+        .list-item-dollar::before { /* New icon for financial points */
+            content: '💰';
+            margin-right: 0.5rem;
+        }
+        .list-item-chart::before { /* New icon for financial points */
+            content: '📊';
+            margin-right: 0.5rem;
+        }
+        .list-item-assumption::before { /* New icon for financial points */
+            content: '🧩';
+            margin-right: 0.5rem;
+        }
+        .list-item-fire::before { /* New icon for financial points */
+            content: '🔥';
+            margin-right: 0.5rem;
+        }
 
-        /* Table styling for competitive advantage */
-        .competitive-table th, .competitive-table td {
+
+        /* Table styling for competitive advantage and financial tables */
+        .data-table th, .data-table td {
             @apply px-4 py-3 text-left border border-gray-300;
         }
-        .competitive-table th {
+        .data-table th {
             @apply bg-blue-700 text-white font-semibold; /* Slightly darker blue for headers */
         }
-        .competitive-table tbody tr:nth-child(odd) {
+        .data-table tbody tr:nth-child(odd) {
             @apply bg-white;
         }
-        .competitive-table tbody tr:nth-child(even) {
+        .data-table tbody tr:nth-child(even) {
             @apply bg-gray-50;
         }
-        .competitive-table .freeza-row {
+        .data-table .freeza-row {
             @apply bg-blue-100 font-bold text-blue-800;
         }
+        .data-table .highlight-row { /* For total rows in financial tables */
+            @apply bg-blue-50 font-bold text-blue-800;
+        }
+        .data-table .positive-profit {
+            color: #28a745; /* Green for positive profit */
+        }
+        .data-table .negative-profit {
+            color: #dc3545; /* Red for negative profit */
+        }
+
 
         /* Responsive table */
         @media (max-width: 768px) {
-            .competitive-table thead {
+            .data-table thead {
                 display: none; /* Hide table headers on small screens */
             }
-            .competitive-table, .competitive-table tbody, .competitive-table tr, .competitive-table td {
+            .data-table, .data-table tbody, .data-table tr, .data-table td {
                 display: block; /* Make table elements stack */
                 width: 100%;
             }
-            .competitive-table tr {
+            .data-table tr {
                 @apply mb-4 border border-gray-300 rounded-lg shadow-sm;
             }
-            .competitive-table td {
+            .data-table td {
                 @apply text-right relative pl-32; /* Adjust padding for label */
                 border: none;
                 border-bottom: 1px solid #eee;
             }
-            .competitive-table td:last-child {
+            .data-table td:last-child {
                 border-bottom: none;
             }
-            .competitive-table td::before {
+            .data-table td::before {
                 content: attr(data-label); /* Use data-label for pseudo-element */
                 @apply absolute left-4 font-semibold text-gray-700;
                 width: 100px; /* Fixed width for labels */
@@ -304,7 +338,7 @@
             </h2>
             <p class="text-lg text-gray-700 mb-8 text-center max-w-3xl mx-auto">We stand out by truly delivering on <strong class="text-blue-700">"Proof Over Paper."</strong></p>
             <div class="overflow-x-auto rounded-lg shadow-lg">
-                <table class="w-full competitive-table">
+                <table class="w-full data-table">
                     <thead>
                         <tr>
                             <th>Platform</th>
@@ -409,6 +443,410 @@
                 <li class="list-item-check text-lg text-gray-800"><strong>Serviceable Addressable Market (SAM):</strong> <strong class="text-blue-700">$9B</strong> (India + South-East Asia – our initial focus).</li>
                 <li class="list-item-check text-lg text-gray-800"><strong>Serviceable Obtainable Market (SOM):</strong> <strong class="text-blue-700">$300M</strong> in the first 3 years.</li>
             </ul>
+        </div>
+    </section>
+
+    <!-- Financial Projections Section -->
+    <section class="section-bg-financial-projections py-16 md:py-24 px-4 rounded-xl shadow-md mt-8 mx-auto max-w-6xl bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                📊 Freeza – 5-Year Financial Projections (INR Lakhs)
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">Users & Accounts</h3>
+            <div class="overflow-x-auto rounded-lg shadow-lg mb-12">
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>FY25 (MVP)</th>
+                            <th>FY26 (Scale-up)</th>
+                            <th>FY27 (Growth)</th>
+                            <th>FY28 (Expansion)</th>
+                            <th>FY29 (Maturity)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Year">Users (Free)</td>
+                            <td data-label="FY25 (MVP)">10,000</td>
+                            <td data-label="FY26 (Scale-up)">100,000</td>
+                            <td data-label="FY27 (Growth)">500,000</td>
+                            <td data-label="FY28 (Expansion)">1,000,000</td>
+                            <td data-label="FY29 (Maturity)">2,000,000</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Year">Paid Users (B2C)</td>
+                            <td data-label="FY25 (MVP)">500</td>
+                            <td data-label="FY26 (Scale-up)">5,000</td>
+                            <td data-label="FY27 (Growth)">25,000</td>
+                            <td data-label="FY28 (Expansion)">50,000</td>
+                            <td data-label="FY29 (Maturity)">100,000</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Year">Institutions (B2B)</td>
+                            <td data-label="FY25 (MVP)">10</td>
+                            <td data-label="FY26 (Scale-up)">100</td>
+                            <td data-label="FY27 (Growth)">300</td>
+                            <td data-label="FY28 (Expansion)">600</td>
+                            <td data-label="FY29 (Maturity)">1,000</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Year">Recruiter Accounts</td>
+                            <td data-label="FY25 (MVP)">10</td>
+                            <td data-label="FY26 (Scale-up)">150</td>
+                            <td data-label="FY27 (Growth)">500</td>
+                            <td data-label="FY28 (Expansion)">1,000</td>
+                            <td data-label="FY29 (Maturity)">1,500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">💰 Revenue Projections (INR Lakhs)</h3>
+            <div class="overflow-x-auto rounded-lg shadow-lg mb-12">
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th>Revenue Source</th>
+                            <th>FY25</th>
+                            <th>FY26</th>
+                            <th>FY27</th>
+                            <th>FY28</th>
+                            <th>FY29</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Revenue Source">B2C Premium Tools</td>
+                            <td data-label="FY25">5</td>
+                            <td data-label="FY26">60</td>
+                            <td data-label="FY27">300</td>
+                            <td data-label="FY28">600</td>
+                            <td data-label="FY29">1,200</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Revenue Source">Credentialing (Web3/NFT)</td>
+                            <td data-label="FY25">2</td>
+                            <td data-label="FY26">50</td>
+                            <td data-label="FY27">150</td>
+                            <td data-label="FY28">300</td>
+                            <td data-label="FY29">500</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Revenue Source">B2B Institutes SaaS</td>
+                            <td data-label="FY25">1</td>
+                            <td data-label="FY26">100</td>
+                            <td data-label="FY27">300</td>
+                            <td data-label="FY28">600</td>
+                            <td data-label="FY29">1,000</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Revenue Source">Recruiter Access + Hiring Tools</td>
+                            <td data-label="FY25">5</td>
+                            <td data-label="FY26">150</td>
+                            <td data-label="FY27">500</td>
+                            <td data-label="FY28">1,000</td>
+                            <td data-label="FY29">1,500</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Revenue Source">Ad Revenue / Sponsored Events</td>
+                            <td data-label="FY25">0</td>
+                            <td data-label="FY26">20</td>
+                            <td data-label="FY27">100</td>
+                            <td data-label="FY28">200</td>
+                            <td data-label="FY29">300</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td data-label="Revenue Source">➡️ Total Revenue</td>
+                            <td data-label="FY25">13</td>
+                            <td data-label="FY26">380</td>
+                            <td data-label="FY27">1,350</td>
+                            <td data-label="FY28">2,700</td>
+                            <td data-label="FY29">4,500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">💸 Expense Projections (INR Lakhs)</h3>
+            <div class="overflow-x-auto rounded-lg shadow-lg mb-12">
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th>Expense Head</th>
+                            <th>FY25</th>
+                            <th>FY26</th>
+                            <th>FY27</th>
+                            <th>FY28</th>
+                            <th>FY29</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Expense Head">Team & Salaries</td>
+                            <td data-label="FY25">36</td>
+                            <td data-label="FY26">120</td>
+                            <td data-label="FY27">240</td>
+                            <td data-label="FY28">360</td>
+                            <td data-label="FY29">480</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Expense Head">Tech + Infra</td>
+                            <td data-label="FY25">12</td>
+                            <td data-label="FY26">24</td>
+                            <td data-label="FY27">48</td>
+                            <td data-label="FY28">60</td>
+                            <td data-label="FY29">72</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Expense Head">Marketing & Sales</td>
+                            <td data-label="FY25">10</td>
+                            <td data-label="FY26">80</td>
+                            <td data-label="FY27">150</td>
+                            <td data-label="FY28">250</td>
+                            <td data-label="FY29">350</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Expense Head">Customer Success</td>
+                            <td data-label="FY25">5</td>
+                            <td data-label="FY26">20</td>
+                            <td data-label="FY27">40</td>
+                            <td data-label="FY28">60</td>
+                            <td data-label="FY29">100</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Expense Head">Ops & Legal</td>
+                            <td data-label="FY25">3</td>
+                            <td data-label="FY26">10</td>
+                            <td data-label="FY27">15</td>
+                            <td data-label="FY28">25</td>
+                            <td data-label="FY29">30</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td data-label="Expense Head">➡️ Total Expenses</td>
+                            <td data-label="FY25">66</td>
+                            <td data-label="FY26">254</td>
+                            <td data-label="FY27">493</td>
+                            <td data-label="FY28">755</td>
+                            <td data-label="FY29">1,032</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">📈 EBITDA & Profitability (INR Lakhs)</h3>
+            <div class="overflow-x-auto rounded-lg shadow-lg mb-12">
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>FY25</th>
+                            <th>FY26</th>
+                            <th>FY27</th>
+                            <th>FY28</th>
+                            <th>FY29</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Metric">EBITDA (₹)</td>
+                            <td data-label="FY25" class="negative-profit">-53</td> <!-- Corrected from -44 based on 13-66 -->
+                            <td data-label="FY26" class="positive-profit">+126</td>
+                            <td data-label="FY27" class="positive-profit">+857</td>
+                            <td data-label="FY28" class="positive-profit">+1,945</td>
+                            <td data-label="FY29" class="positive-profit">+3,468</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">EBITDA Margin (%)</td>
+                            <td data-label="FY25" class="negative-profit">-407.7%</td> <!-- Corrected calculation -->
+                            <td data-label="FY26" class="positive-profit">33%</td>
+                            <td data-label="FY27" class="positive-profit">63%</td>
+                            <td data-label="FY28" class="positive-profit">72%</td>
+                            <td data-label="FY29" class="positive-profit">77%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">🧩 Key Assumptions:</h3>
+            <ul class="space-y-3 max-w-3xl mx-auto mb-16">
+                <li class="list-item-assumption text-lg text-gray-800">Average B2C user pays ₹600–₹1,200/year for premium tools</li>
+                <li class="list-item-assumption text-lg text-gray-800">Institutions pay ₹15,000–₹50,000/year (based on size/modules)</li>
+                <li class="list-item-assumption text-lg text-gray-800">Recruiters pay ₹5,000–₹25,000/year for access, shortlisting, AI tools</li>
+                <li class="list-item-assumption text-lg text-gray-800">Web3 credential fee: ₹100–₹300 per student</li>
+                <li class="list-item-assumption text-lg text-gray-800">Team scales from 5 (FY25) to ~40 people (FY29)</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">📌 Summary:</h3>
+            <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-16">
+                Freeza starts lean, reaches cash-flow positive in Year 2, and scales efficiently with low CAC due to its product-led growth model and ecosystem partnerships.
+                By Year 5, Freeza is a <strong class="text-blue-700">₹45 Cr revenue company</strong> with high margins and strong multi-channel monetization.
+            </p>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                💵 Unit Economics – Freeza
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">🧑‍🎓 1. B2C (Students & Professionals)</h3>
+            <div class="overflow-x-auto rounded-lg shadow-lg mb-12">
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Metric">CAC (Cost to Acquire)</td>
+                            <td data-label="Value">₹60–₹100 (Organic via tools & referrals)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">ARPU (Avg. Revenue/User/Year)</td>
+                            <td data-label="Value">₹600 (resume, SOP, AI tools, quests)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">Gross Margin</td>
+                            <td data-label="Value">~90% (digital product)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">LTV (3-year retention)</td>
+                            <td data-label="Value">₹1,500–₹1,800</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">LTV:CAC Ratio</td>
+                            <td data-label="Value">15:1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto text-center">
+                <span class="list-item-check inline-block"></span>Upsell opportunities include Web3 certification, premium career mapping, and job assist programs.
+            </p>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">🏫 2. B2B – Colleges & Coaching Institutes</h3>
+            <div class="overflow-x-auto rounded-lg shadow-lg mb-12">
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Metric">CAC (via direct sales or channel)</td>
+                            <td data-label="Value">₹3,000–₹5,000/institute</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">ARPU (Avg. Revenue/Year)</td>
+                            <td data-label="Value">₹15,000–₹50,000 (tier-based)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">Gross Margin</td>
+                            <td data-label="Value">85%+</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">LTV (3-year retention)</td>
+                            <td data-label="Value">₹75,000–₹120,000</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">LTV:CAC Ratio</td>
+                            <td data-label="Value">15–25:1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto text-center">
+                <span class="list-item-check inline-block"></span>Institutes use Freeza for placement reporting, blockchain certification, and event hosting – making retention high and churn low.
+            </p>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">🏢 3. Recruiters / Companies</h3>
+            <div class="overflow-x-auto rounded-lg shadow-lg mb-12">
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Metric">CAC</td>
+                            <td data-label="Value">₹500–₹2,000 (outreach/events)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">ARPU</td>
+                            <td data-label="Value">₹10,000–₹25,000/year (based on usage)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">Gross Margin</td>
+                            <td data-label="Value">~90%</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">LTV (2–3 years)</td>
+                            <td data-label="Value">₹30,000–₹60,000</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Metric">LTV:CAC Ratio</td>
+                            <td data-label="Value">10–20:1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto text-center">
+                <span class="list-item-check inline-block"></span>Recruiters pay for access to AI-shortlisted talent pools, verified projects, and hiring analytics dashboards.
+            </p>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">📊 Summary Snapshot</h3>
+            <div class="overflow-x-auto rounded-lg shadow-lg mb-12">
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th>Segment</th>
+                            <th>CAC</th>
+                            <th>ARPU</th>
+                            <th>LTV</th>
+                            <th>LTV:CAC</th>
+                            <th>Margin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Segment">B2C Students</td>
+                            <td data-label="CAC">₹100</td>
+                            <td data-label="ARPU">₹600</td>
+                            <td data-label="LTV">₹1,800</td>
+                            <td data-label="LTV:CAC">15:1</td>
+                            <td data-label="Margin">90%</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Segment">B2B Colleges</td>
+                            <td data-label="CAC">₹5,000</td>
+                            <td data-label="ARPU">₹30,000</td>
+                            <td data-label="LTV">₹90,000</td>
+                            <td data-label="LTV:CAC">18:1</td>
+                            <td data-label="Margin">85%+</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Segment">Recruiters</td>
+                            <td data-label="CAC">₹1,000</td>
+                            <td data-label="ARPU">₹20,000</td>
+                            <td data-label="LTV">₹50,000</td>
+                            <td data-label="LTV:CAC">20:1</td>
+                            <td data-label="Margin">90%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">🔥 Why It Matters</h3>
+            <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+                Freeza’s high LTV:CAC ratios and digital product margins make the business highly scalable, capital-efficient, and profitable at scale — with low churn due to ecosystem lock-in (portfolios, credentials, hiring cycles).
+            </p>
         </div>
     </section>
 
