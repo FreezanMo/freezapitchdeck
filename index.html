@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freeza: Investor Pitch Deck</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for background images and specific elements not easily done with Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f0f7f7; /* Mild background color - very light blue-green */
+        }
+
+        /* Section backgrounds with overlays for theme */
+        .section-bg-cover {
+            background-image: linear-gradient(rgba(45, 85, 120, 0.8), rgba(45, 85, 120, 0.8)), url('https://placehold.co/1600x600/4682B4/FFFFFF?text=College+Campus+Vibrant'); /* Mild blue tone for cover */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-bg-mission-problem {
+            background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://placehold.co/1200x400/DDEEEF/555555?text=Students+Collaborating+Study'); /* Mild light blue-green */
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .section-bg-solution-who {
+            background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://placehold.co/1200x400/EAF2F2/444444?text=Career+Pathways+Opportunities'); /* Mild light blue-green */
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .section-bg-product-ai {
+            background-image: linear-gradient(rgba(245,250,250,0.95), rgba(245,250,250,0.95)), url('https://placehold.co/1200x400/D0E0E0/333333?text=Tech+Innovation+Workplace'); /* Mild light gray-blue */
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .section-bg-business-traction {
+            background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://placehold.co/1200x400/EAF2F2/222222?text=Business+Growth+Analytics'); /* Mild light blue-green */
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .section-bg-trust-market {
+            background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://placehold.co/1200x400/D0E0E0/111111?text=Data+Security+Trust'); /* Mild light gray-blue */
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .section-bg-roadmap-team-ask {
+            background-image: linear-gradient(rgba(245,250,250,0.95), rgba(245,250,250,0.95)), url('https://placehold.co/1200x400/C0D0D0/000000?text=Future+Vision+Teamwork'); /* Mild light gray-blue */
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .section-bg-closing {
+            background-image: linear-gradient(rgba(45, 85, 120, 0.9), rgba(45, 85, 120, 0.9)), url('https://placehold.co/1600x600/4682B4/FFFFFF?text=Diverse+Professionals+Success'); /* Mild blue tone for closing */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Custom list item icons */
+        .list-item-check::before {
+            content: '✅';
+            margin-right: 0.5rem;
+            color: #28a745; /* Tailwind green-600 */
+        }
+        .list-item-cross::before {
+            content: '❌';
+            margin-right: 0.5rem;
+            color: #dc3545; /* Tailwind red-600 */
+        }
+        .list-item-sparkle::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            color: #ffc107; /* Tailwind yellow-500 */
+        }
+        .list-item-rocket::before {
+            content: '🚀';
+            margin-right: 0.5rem;
+            color: #ff4500; /* Orange-red */
+        }
+        .list-item-warning::before {
+            content: '⚠️';
+            margin-right: 0.5rem;
+            color: #ffc107; /* Tailwind yellow-500 */
+        }
+
+        /* Table styling for competitive advantage */
+        .competitive-table th, .competitive-table td {
+            @apply px-4 py-3 text-left border border-gray-300;
+        }
+        .competitive-table th {
+            @apply bg-blue-700 text-white font-semibold; /* Slightly darker blue for headers */
+        }
+        .competitive-table tbody tr:nth-child(odd) {
+            @apply bg-white;
+        }
+        .competitive-table tbody tr:nth-child(even) {
+            @apply bg-gray-50;
+        }
+        .competitive-table .freeza-row {
+            @apply bg-blue-100 font-bold text-blue-800;
+        }
+
+        /* Responsive table */
+        @media (max-width: 768px) {
+            .competitive-table thead {
+                display: none; /* Hide table headers on small screens */
+            }
+            .competitive-table, .competitive-table tbody, .competitive-table tr, .competitive-table td {
+                display: block; /* Make table elements stack */
+                width: 100%;
+            }
+            .competitive-table tr {
+                @apply mb-4 border border-gray-300 rounded-lg shadow-sm;
+            }
+            .competitive-table td {
+                @apply text-right relative pl-32; /* Adjust padding for label */
+                border: none;
+                border-bottom: 1px solid #eee;
+            }
+            .competitive-table td:last-child {
+                border-bottom: none;
+            }
+            .competitive-table td::before {
+                content: attr(data-label); /* Use data-label for pseudo-element */
+                @apply absolute left-4 font-semibold text-gray-700;
+                width: 100px; /* Fixed width for labels */
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Cover Section -->
+    <header class="section-bg-cover text-white text-center py-24 md:py-32 rounded-b-xl shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Freeza: The Ultimate AI-Powered Talent, Learning & Hiring Platform</h1>
+            <p class="text-xl md:text-2xl mb-6 opacity-90">Where verified skills, AI-powered careers, and global opportunities converge.</p>
+            <p class="text-2xl md:text-3xl font-bold text-yellow-400">"Proof Over Paper."</p>
+        </div>
+    </header>
+
+    <!-- Mission & Problem Section -->
+    <section class="section-bg-mission-problem py-16 md:py-24 px-4 rounded-xl shadow-md mt-8 mx-auto max-w-6xl">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                Our Mission
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-700 text-center max-w-3xl mx-auto mb-16">
+                Freeza empowers individuals from <strong class="text-blue-700">all academic and professional backgrounds</strong> with the tools to confidently build and advance their careers. We transform how skills are developed, verified, and hired using <strong class="text-blue-700">AI, real-world projects, and actionable guidance.</strong>
+            </p>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                The Problem We're Solving
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">The current talent ecosystem is broken:</p>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-cross text-lg text-gray-800">Traditional resumes lack verifiable proof. They're just paper.</li>
+                <li class="list-item-cross text-lg text-gray-800">Hiring is biased, inefficient, and often geographically restricted.</li>
+                <li class="list-item-cross text-lg text-gray-800">Colleges struggle to track real learning outcomes.</li>
+                <li class="list-item-cross text-lg text-gray-800">Coaching centers lack tech-enabled certification and promotion platforms.</li>
+                <li class="list-item-cross text-lg text-gray-800">Self-taught and non-traditional talent are often overlooked.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Our Solution & Who Freeza Is For Section -->
+    <section class="section-bg-solution-who py-16 md:py-24 px-4 rounded-xl shadow-md mt-8 mx-auto max-w-6xl bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                Our Solution: Freeza
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">A comprehensive <strong class="text-blue-700">AI-first platform</strong> that's revolutionizing talent:</p>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800"><strong>Verifiable Skill Portfolios:</strong> Showcase what you can <em>actually do</em>.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Smart Job Matching:</strong> Connects talent with the right opportunities across <strong class="text-blue-700">all fields</strong>.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>AI-Powered Career Mapping:</strong> Personalized guidance for career advancement.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Web3-Backed Certification:</strong> Blockchain ensures authenticity and immutability of achievements.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Role-Specific Dashboards:</strong> Tailored experiences for learners, colleges, recruiters, and coaching centers.</li>
+            </ul>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                Who Freeza Is For: A Multi-Sided Platform
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Freeza serves the entire talent lifecycle:</p>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800"><strong>Students & Freshers:</strong> From any academic stream.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Self-Taught / Career Changers:</strong> Unlocking new opportunities.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Colleges & Universities:</strong> Enhancing curriculum and placements.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Coaching / Training Institutes:</strong> Modernizing certification and outreach.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Companies / Recruiters:</strong> Across <strong class="text-blue-700">all industries</strong> for smarter hiring.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Product Features & Advanced AI Section -->
+    <section class="section-bg-product-ai py-16 md:py-24 px-4 rounded-xl shadow-md mt-8 mx-auto max-w-6xl">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                Product Features Overview
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">For Talent:</h3>
+            <ul class="space-y-4 max-w-3xl mx-auto mb-12">
+                <li class="list-item-sparkle text-lg text-gray-800">AI Resumes & Portfolio Builder: Go beyond the CV.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Job Matching & Skill Assessments: Find your perfect fit.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Career Path Insights: Visualize your future.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Project Repository & AI Feedback: For developers and professionals to hone skills.</li>
+            </ul>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">For Institutions & Recruiters:</h3>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-sparkle text-lg text-gray-800">Colleges: Curriculum insights, dashboards, and placement tracking.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Coaching Centers: Course creation, blockchain certificates, and monetization tools.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Companies: Smart hiring dashboards, AI candidate shortlisting, and powerful analytics.</li>
+            </ul>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                Advanced AI & Web3 Capabilities
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Freeza is powered by cutting-edge technology:</p>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-sparkle text-lg text-gray-800">AI Portfolio Visualizer: Dynamic representation of skills.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Gemini 2.0 Resume/Essay Writer: Intelligent content generation.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Predictive Career Mapper: Forecasts career paths and skill gaps.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Gamified Learning Engine: Engaging and effective skill development.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Explainable AI Scoring: Transparency in talent evaluation.</li>
+                <li class="list-item-sparkle text-lg text-gray-800">Blockchain/NFT-backed certificates: On Polygon/Solana for <strong class="text-blue-700">unquestionable authenticity</strong>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Business Model & Traction Section -->
+    <section class="section-bg-business-traction py-16 md:py-24 px-4 rounded-xl shadow-md mt-8 mx-auto max-w-6xl bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                Business Model: Freemium + Premium Tiers
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">We offer scalable plans for every user:</p>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800"><strong>Students:</strong> Free basic tools; <strong class="text-blue-700">Pro with unlimited resumes, full portfolio</strong> ($X/month).</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Developers:</strong> Free project showcase; <strong class="text-blue-700">Pro unlocks private reviews and more.</strong></li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Colleges:</strong> <strong class="text-blue-700">₹10,999/year per branch</strong> for full analytics and admin control.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Coaching Centers:</strong> Monthly/Yearly plans with event and certification tools.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Companies:</strong> Post 2 jobs free; <strong class="text-blue-700">unlock full hiring dashboard with Premium.</strong></li>
+            </ul>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                Seamless Signup & Login Flow
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800">Role-Based Dashboards: Tailored experiences for Student, Professional, College, Coaching, Company.</li>
+                <li class="list-item-check text-lg text-gray-800">SSO Integration: Google, LinkedIn, GitHub for convenience.</li>
+                <li class="list-item-check text-lg text-gray-800">Robust Security: JWT-secured login with Supabase + Row-Level Security.</li>
+                <li class="list-item-check text-lg text-gray-800">Custom Subdomains: For institutional clients, enhancing brand experience.</li>
+            </ul>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                Traction & Go-To-Market
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">Early Success:</h3>
+            <ul class="space-y-4 max-w-3xl mx-auto mb-12">
+                <li class="list-item-check text-lg text-gray-800"><strong class="text-blue-700">20+ colleges</strong> across India onboarded.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong class="text-blue-700">5+ coaching partners</strong> secured.</li>
+                <li class="list-item-check text-lg text-gray-800"><strong class="text-blue-700">1,000+ student users</strong> already leveraging the platform.</li>
+            </ul>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">GTM Strategy:</h3>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800">B2B2C Campaigns: Leveraging our college network for direct student access.</li>
+                <li class="list-item-check text-lg text-gray-800">Strategic Partnerships: Collaborating with leading EdTech & HR platforms.</li>
+                <li class="list-item-check text-lg text-gray-800">Targeted Ads: Reaching recruiters, coaching centers, and job seekers where they are.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage Section -->
+    <section class="py-16 md:py-24 px-4 bg-blue-100 rounded-xl shadow-md mt-8 mx-auto max-w-6xl"> <!-- Changed to a milder blue -->
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                Competitive Advantage
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 text-center max-w-3xl mx-auto">We stand out by truly delivering on <strong class="text-blue-700">"Proof Over Paper."</strong></p>
+            <div class="overflow-x-auto rounded-lg shadow-lg">
+                <table class="w-full competitive-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>AI-Powered Matching</th>
+                            <th>Web3 Credentials</th>
+                            <th>Multi-Domain Support</th>
+                            <th>Gamified Learning</th>
+                            <th>Focus on Verifiable Skills</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="freeza-row">
+                            <td data-label="Platform">Freeza</td>
+                            <td data-label="AI-Powered Matching">✅</td>
+                            <td data-label="Web3 Credentials">✅</td>
+                            <td data-label="Multi-Domain Support">✅</td>
+                            <td data-label="Gamified Learning">✅</td>
+                            <td data-label="Focus on Verifiable Skills">✅</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Platform">LinkedIn</td>
+                            <td data-label="AI-Powered Matching">✅</td>
+                            <td data-label="Web3 Credentials">❌</td>
+                            <td data-label="Multi-Domain Support">✅</td>
+                            <td data-label="Gamified Learning">❌</td>
+                            <td data-label="Focus on Verifiable Skills">❌</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Platform">Internshala</td>
+                            <td data-label="AI-Powered Matching">❌</td>
+                            <td data-label="Web3 Credentials">❌</td>
+                            <td data-label="Multi-Domain Support">⚠️ (Student-focused)</td>
+                            <td data-label="Gamified Learning">❌</td>
+                            <td data-label="Focus on Verifiable Skills">❌</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Platform">Coursera</td>
+                            <td data-label="AI-Powered Matching">⚠️</td>
+                            <td data-label="Web3 Credentials">❌</td>
+                            <td data-label="Multi-Domain Support">⚠️ (Course-focused)</td>
+                            <td data-label="Gamified Learning">⚠️</td>
+                            <td data-label="Focus on Verifiable Skills">❌</td>
+                        </tr>
+                         <tr>
+                            <td data-label="Platform">Naukri</td>
+                            <td data-label="AI-Powered Matching">✅</td>
+                            <td data-label="Web3 Credentials">❌</td>
+                            <td data-label="Multi-Domain Support">✅</td>
+                            <td data-label="Gamified Learning">❌</td>
+                            <td data-label="Focus on Verifiable Skills">❌</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Platform">Indeed</td>
+                            <td data-label="AI-Powered Matching">✅</td>
+                            <td data-label="Web3 Credentials">❌</td>
+                            <td data-label="Multi-Domain Support">✅</td>
+                            <td data-label="Gamified Learning">❌</td>
+                            <td data-label="Focus on Verifiable Skills">❌</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Security, Monetization, Market Opportunity Section -->
+    <section class="section-bg-trust-market py-16 md:py-24 px-4 rounded-xl shadow-md mt-8 mx-auto max-w-6xl bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                Trust & Security
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Your data and our platform's integrity are paramount:</p>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800">Supabase Auth + Row-Level Security: Gold standard for data protection.</li>
+                <li class="list-item-check text-lg text-gray-800">GDPR Compliant: Adhering to global data privacy standards.</li>
+                <li class="list-item-check text-lg text-gray-800">Bias-Audited AI Models: Ensuring fair and equitable outcomes.</li>
+                <li class="list-item-check text-lg text-gray-800">End-to-End Data Encryption: Protecting all user information.</li>
+                <li class="list-item-check text-lg text-gray-800">Institutional Access: Verified domains for secure client integration.</li>
+            </ul>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                Monetization Strategy
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">Multiple revenue streams for sustainable growth:</p>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800">Subscriptions: From Students, Colleges, Coaching Centers, and Companies.</li>
+                <li class="list-item-check text-lg text-gray-800">Blockchain Credential Fees: For verifiable certifications.</li>
+                <li class="list-item-check text-lg text-gray-800">Featured Jobs & Portfolio Ads: Enhancing visibility for premium clients.</li>
+                <li class="list-item-check text-lg text-gray-800">Institutional Dashboards: Custom pricing for multi-department colleges.</li>
+                <li class="list-item-check text-lg text-gray-800">API Licensing: Integrating Freeza's power into other EdTech & LMS platforms.</li>
+            </ul>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                Market Opportunity
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">The market is ripe for disruption:</p>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800"><strong>Total Addressable Market (TAM):</strong> <strong class="text-blue-700">$80B+</strong> (Global EdTech + HRTech).</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Serviceable Addressable Market (SAM):</strong> <strong class="text-blue-700">$9B</strong> (India + South-East Asia – our initial focus).</li>
+                <li class="list-item-check text-lg text-gray-800"><strong>Serviceable Obtainable Market (SOM):</strong> <strong class="text-blue-700">$300M</strong> in the first 3 years.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Roadmap, Team, Ask & Use of Funds Section -->
+    <section class="section-bg-roadmap-team-ask py-16 md:py-24 px-4 rounded-xl shadow-md mt-8 mx-auto max-w-6xl">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800 relative">
+                Roadmap
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">2025 (Q3-Q4):</h3>
+            <ul class="space-y-4 max-w-3xl mx-auto mb-12">
+                <li class="list-item-rocket text-lg text-gray-800">Launch public beta.</li>
+                <li class="list-item-rocket text-lg text-gray-800">Onboard 100 colleges.</li>
+                <li class="list-item-rocket text-lg text-gray-800">Initiate paid marketing campaigns.</li>
+            </ul>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">2026:</h3>
+            <ul class="space-y-4 max-w-3xl mx-auto mb-12">
+                <li class="list-item-rocket text-lg text-gray-800">Expand to MENA, APAC markets.</li>
+                <li class="list-item-rocket text-lg text-gray-800">Launch Freeza Hiring API for seamless integration.</li>
+            </ul>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">2027:</h3>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-rocket text-lg text-gray-800">Launch AI Career Advisor 2.0 with enhanced predictive capabilities.</li>
+                <li class="list-item-rocket text-lg text-gray-800">Expand to 5000+ institutions globally.</li>
+            </ul>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                Our Exceptional Team
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <div class="text-center max-w-3xl mx-auto">
+                <h3 class="text-2xl font-semibold text-blue-700 mb-4">Freezan Mo – Founder & CEO</h3>
+                <p class="text-lg text-gray-800 mb-4">12+ years of proven experience in global IT & SaaS sales, driving growth and innovation.</p>
+                <p class="text-lg text-gray-800 mb-4"><strong>Advisors:</strong> A powerful network of TalentTech & EdTech experts, leading AI engineers, and university deans.</p>
+                <p class="text-lg text-gray-800"><strong>Hiring:</strong> Actively seeking top-tier AI researchers, Business Development Managers, and Growth Leads to scale our vision.</p>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 mt-16 text-blue-800 relative">
+                Our Ask & Use of Funds
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 rounded-full"></span>
+            </h2>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">Seeking: <span class="text-green-600">$250K Seed Funding</span></h3>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-6 text-center">Use of Funds Allocation:</h3>
+            <ul class="space-y-4 max-w-3xl mx-auto">
+                <li class="list-item-check text-lg text-gray-800">40% Tech Development: Fueling AI, Web3, and Mobile advancements.</li>
+                <li class="list-item-check text-lg text-gray-800">30% Growth & Marketing: Expanding our reach and user base.</li>
+                <li class="list-item-check text-lg text-gray-800">20% Talent Acquisition: Building a world-class team.</li>
+                <li class="list-item-check text-lg text-gray-800">10% Operational Reserves: Ensuring smooth and resilient operations.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Closing Section -->
+    <footer class="section-bg-closing text-white text-center py-24 md:py-32 rounded-t-xl shadow-lg mt-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 relative">
+                Freeza: One Platform. Infinite Possibilities.
+                <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-24 h-1 bg-yellow-400 rounded-full"></span>
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+                We are building the future of careers, empowering the next billion learners and workers with verifiable skills that truly matter.
+            </p>
+            <p class="text-2xl md:text-3xl font-bold text-yellow-400 mb-12">
+                Let’s Build the Future of Careers – Together.
+            </p>
+
+            <div class="contact-info text-lg md:text-xl leading-relaxed">
+                <p class="font-semibold mb-2">Freezan Mo</p>
+                <p class="mb-2">Founder & CEO, Freeza</p>
+                <p class="mb-2">📧 <a href="mailto:freezan@freeza.pro" class="text-yellow-300 hover:underline">freezan@freeza.pro</a></p>
+                <p class="mb-2">🌐 <a href="http://www.freeza.pro" target="_blank" class="text-yellow-300 hover:underline">www.freeza.pro</a></p>
+                <p>🔗 <a href="https://www.linkedin.com/company/freeza" target="_blank" class="text-yellow-300 hover:underline">LinkedIn: Freeza Company Page</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
